@@ -1,0 +1,85 @@
+{
+    "Шаблон программы": {
+        "prefix": "cppmain",
+        "description": "Заготовка программы: #include <iostream> и функция main",
+        "body": [
+            "#include <iostream>",
+            "",
+            "int main() {",
+            "\t$0",
+            "\treturn 0;",
+            "}"
+        ]
+    },
+    "Цикл for по индексу": {
+        "prefix": "fori",
+        "description": "for (int i = 0; i < n; ++i)",
+        "body": [
+            "for (int ${1:i} = 0; ${1:i} < ${2:n}; ++${1:i}) {",
+            "\t$0",
+            "}"
+        ]
+    },
+    "Функция чтения массива": {
+        "prefix": "readarr",
+        "description": "Функция, которая читает n чисел в обычный массив",
+        "body": [
+            "void readArray(int arr[], int n) {",
+            "\tfor (int i = 0; i < n; ++i) {",
+            "\t\tstd::cin >> arr[i];",
+            "\t}",
+            "}"
+        ]
+    },
+    "Функция вывода массива": {
+        "prefix": "printarr",
+        "description": "Функция, которая печатает массив через пробел",
+        "body": [
+            "void printArray(const int arr[], int n) {",
+            "\tfor (int i = 0; i < n; ++i) {",
+            "\t\tstd::cout << arr[i] << ' ';",
+            "\t}",
+            "\tstd::cout << std::endl;",
+            "}"
+        ]
+    },
+    "Сортировка пузырьком": {
+        "prefix": "bubblesort",
+        "description": "Сортировка массива по возрастанию без <algorithm>",
+        "body": [
+            "void bubbleSort(int arr[], int n) {",
+            "\tfor (int i = 0; i < n - 1; ++i) {",
+            "\t\tfor (int j = 0; j < n - 1 - i; ++j) {",
+            "\t\t\tif (arr[j] > arr[j + 1]) {",
+            "\t\t\t\tint temp = arr[j];",
+            "\t\t\t\tarr[j] = arr[j + 1];",
+            "\t\t\t\tarr[j + 1] = temp;",
+            "\t\t\t}",
+            "\t\t}",
+            "\t}",
+            "}"
+        ]
+    },
+    "Бинарный поиск": {
+        "prefix": "binsearch",
+        "description": "Поиск элемента в отсортированном массиве; возвращает индекс или -1",
+        "body": [
+            "int binarySearch(const int arr[], int n, int target) {",
+            "\tint left = 0;",
+            "\tint right = n - 1;",
+            "\twhile (left <= right) {",
+            "\t\tint middle = left + (right - left) / 2;",
+            "\t\tif (arr[middle] == target) {",
+            "\t\t\treturn middle;",
+            "\t\t}",
+            "\t\tif (arr[middle] < target) {",
+            "\t\t\tleft = middle + 1;",
+            "\t\t} else {",
+            "\t\t\tright = middle - 1;",
+            "\t\t}",
+            "\t}",
+            "\treturn -1;",
+            "}"
+        ]
+    }
+}

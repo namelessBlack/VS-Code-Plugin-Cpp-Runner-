@@ -1,0 +1,117 @@
+{
+  "name": "cpp-runner",
+  "displayName": "C++ Runner",
+  "description": "Запуск C++ программ одной кнопкой, header guard, создание классов и сниппеты",
+  "version": "0.0.1",
+  "publisher": "student",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/USERNAME/cpp-runner.git"
+  },
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onLanguage:cpp"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "cpp-runner.run",
+        "title": "C++ Runner: Скомпилировать и запустить",
+        "icon": "$(play)"
+      },
+      {
+        "command": "cpp-runner.insertHeaderGuard",
+        "title": "C++ Runner: Вставить header guard"
+      },
+      {
+        "command": "cpp-runner.createClass",
+        "title": "C++ Runner: Создать класс"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "cpp-runner.run",
+          "when": "resourceExtname == .cpp",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "cpp-runner.insertHeaderGuard",
+          "when": "resourceExtname == .h || resourceExtname == .hpp"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "cpp-runner.createClass",
+          "when": "explorerResourceIsFolder"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "cpp-runner.run",
+        "key": "ctrl+alt+r",
+        "when": "editorLangId == cpp"
+      }
+    ],
+    "configuration": {
+      "title": "C++ Runner",
+      "properties": {
+        "cppRunner.compiler": {
+          "type": "string",
+          "default": "g++",
+          "description": "Компилятор C++ (например g++ или clang++)"
+        },
+        "cppRunner.standard": {
+          "type": "string",
+          "enum": [
+            "c++11",
+            "c++14",
+            "c++17",
+            "c++20"
+          ],
+          "default": "c++17",
+          "description": "Стандарт языка C++"
+        }
+      }
+    },
+    "snippets": [
+      {
+        "language": "cpp",
+        "path": "./snippets/cpp.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "typescript-eslint": "^8.61.1",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.3",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  }
+}

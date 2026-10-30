@@ -1,0 +1,11 @@
+out
+node_modules
+.vscode-test/
+*.vsix
+
+# скомпилированные программы из examples
+examples/hello
+examples/*.exe
+.DS_Store
+*.dSYM/
+examples/.vscode/
